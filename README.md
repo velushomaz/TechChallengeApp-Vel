@@ -1,5 +1,6 @@
 # TechChallengeApp-Vel
-Submission for Servian's [TechChallengeApp](https://github.com/servian/TechChallengeApp)
+Submission for Servian's [TechChallengeApp](https://github.com/servian/TechChallengeApp) by Vel. 
+*Date*: 2022-02-07
 
 ## Documentations
 
@@ -9,7 +10,7 @@ Submission for Servian's [TechChallengeApp](https://github.com/servian/TechChall
 - [doc/adr](doc/adr) folder
   Architecture Design Records (ADR), details on why can be found in the [first entry](doc/adr/0001-record-architecture-decisions.md)
 
-  Naming convention: `####-<decision title>` where the first 4 digits are iterated by 1 for each record.
+  Naming convention: `####-<decision title>` where the first 3 digits are iterated by 1 for each record.
 
 ## Deployment
 
@@ -28,9 +29,23 @@ I have Terraform v1.1.5 installed on my local machine.
 
 - Clone Repo and cd to [terraform](terraform folder).
 
+'''
+cd TechChallengeApp-Vel/terraform
+'''
+
 - Seed user.tfvars by copying over user.tfvars.example > user.tfvars. Example is given on the file.
 
-- If you wish to save the tfstate on AWS instead, create an S3 bucket, copy over backend_seed/backend.tf file and configure 
+'''
+\# Assuming we are still on TechChallengeApp-Vel/terraform
+cmv user.tfvars.example user.tfvars
+'''
+
+- If you wish to save the tfstate on AWS instead, create an S3 bucket, copy over backend_seed/backend.tf file and configure backend_bucket on users.tfvars file.
+
+'''
+\# Assuming we are still on TechChallengeApp-Vel/terraform
+cp ../backend_seed/backend.tf .
+'''
 
 - Initialise our deployment (make sure you're still on terraform directory)
 
@@ -60,7 +75,7 @@ The app might take up to 5 minutes after deployment is completed.
 
 Once completed, terraform will output the lb_dns_name, and you may access the application from internet-connected browser on port 80.
 
-Example: 
+*Example Output Logs:* 
 
 ```
 Apply complete! Resources: 23 added, 0 changed, 0 destroyed.
@@ -77,6 +92,10 @@ terraform destroy -var-file="user.tfvars"
 ```
 
 ## Challenges and Known Issues
+
+### Version Control
+
+I am working mostly on dev branch, only merging to main for releases. Chances are I might still be working on this interesting project in the near future so keep an eye out for the dev branch if there are any updates.
 
 ### Password Management
 
