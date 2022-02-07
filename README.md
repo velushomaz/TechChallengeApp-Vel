@@ -29,23 +29,22 @@ I have Terraform v1.1.5 installed on my local machine.
 
 - Clone Repo and cd to [terraform](terraform folder).
 
-'''
+```
 cd TechChallengeApp-Vel/terraform
-'''
-
+```
 - Seed user.tfvars by copying over user.tfvars.example > user.tfvars. Example is given on the file.
 
-'''
+```
 \# Assuming we are still on TechChallengeApp-Vel/terraform
 cmv user.tfvars.example user.tfvars
-'''
+```
 
 - If you wish to save the tfstate on AWS instead, create an S3 bucket, copy over backend_seed/backend.tf file and configure backend_bucket on users.tfvars file.
 
-'''
+```
 \# Assuming we are still on TechChallengeApp-Vel/terraform
 cp ../backend_seed/backend.tf .
-'''
+```
 
 - Initialise our deployment (make sure you're still on terraform directory)
 
