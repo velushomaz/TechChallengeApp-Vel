@@ -1,5 +1,9 @@
-# Local .terraform directories
+# Local .terraform directories and user files
 **/.terraform/*
+*user.tfvars
+
+# Backup 
+backup*
 
 # .tfstate files
 *.tfstate
