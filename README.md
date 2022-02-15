@@ -1,6 +1,9 @@
 # TechChallengeApp-Vel
 Submission for Servian's [TechChallengeApp](https://github.com/servian/TechChallengeApp) by Vel. 
-*Date*: 2022-02-07
+
+**Date Submitted**: 2022-02-07
+
+**Latest Update**: 2022-02-16
 
 ## Documentations
 
@@ -10,49 +13,53 @@ Submission for Servian's [TechChallengeApp](https://github.com/servian/TechChall
 - [doc/adr](doc/adr) folder
   Architecture Design Records (ADR), details on why can be found in the [first entry](doc/adr/0001-record-architecture-decisions.md)
 
-  Naming convention: `####-<decision title>` where the first 3 digits are iterated by 1 for each record.
+  Naming convention: `###-<decision title>` where the first 3 digits are iterated by 1 for each record.
 
 ## Deployment
 
 The deployment of the app is made done on AWS using Terraform. ([helm_charts/tech-challenge-app](helm_charts/tech-challenge-app) folder)
 
+![system-diagram](./resources/sys-diagram-v1.jpeg)
+
 ### Deploy Requirements
 
-- Terraform. [Guide here](https://learn.hashicorp.com/tutorials/terraform/install-cli)
+- Terraform. [Guide to install here.](https://learn.hashicorp.com/tutorials/terraform/install-cli)
 
 I have Terraform v1.1.5 installed on my local machine.
 
-- AWS access key and secret key. [Guide here](./guides/aws.md) 
+- AWS access key and secret key retrieved from created IAM role. [Instructions can be found here.](./guides/aws.md) 
 
 
 ### Configuring
 
-- Clone Repo and cd to [terraform](terraform folder).
+- Clone Repo and cd to [terraform folder](./terraform/).
 
 ```
 cd TechChallengeApp-Vel/terraform
 ```
-- Seed user.tfvars by copying over user.tfvars.example > user.tfvars. Example is given on the file.
+- Seed user.tfvars by copying over `user.tfvars.example` > `user.tfvars`. Example is given on the file.
 
 ```
-# Assuming we are still on TechChallengeApp-Vel/terraform
-cmv user.tfvars.example user.tfvars
+# Assuming we are still on TechChallengeApp-Vel/terraform dir:
+
+mv user.tfvars.example user.tfvars
 ```
 
-- If you wish to save the tfstate on AWS instead, create an S3 bucket, copy over backend_seed/backend.tf file and configure backend_bucket on users.tfvars file.
+- If you wish to save the tfstate on AWS instead, create an S3 bucket, copy over `backend_seed/backend.tf` file and configure backend_bucket on `users.tfvars` file.
 
 ```
-# Assuming we are still on TechChallengeApp-Vel/terraform
+# Assuming we are still on TechChallengeApp-Vel/terraform dir: 
+
 cp ../backend_seed/backend.tf .
 ```
 
 - Initialise our deployment (make sure you're still on terraform directory)
 
 ```
-.../terraform/ $ terraform init
+terraform init
 ```
 
-- Plan the deployment and validate.
+- Plan the deployment and validate beforehand.
 
 ```
 terraform validate
@@ -98,7 +105,7 @@ I am working mostly on dev branch, only merging to main for releases. Chances ar
 
 ### Password Management
 
-Currently users have to seed user.tfvars and apply with password stored in plaintext -> a better way would be using IAM roles to authenticate between EC2 instances and Postgresql RDS.
+Currently users have to seed user.tfvars and apply with password stored in plaintext -> a better way would be using IAM roles to authenticate between EC2 instances and PostgreSQL RDS.
 
 ### Serving the App
 
@@ -124,3 +131,9 @@ It is possible to configure this since we are using ALB, however it will be out 
 - Serving DB and initialising it can be done with Systems Manager or Lambda functions.
 - REST APIs can be configured for end users to interact with the application tier. 
 - Monitoring with cloudwatch.
+
+### Update Logs
+- 2022-02-16 
+  - Systems diagram of the submission created on LucidChart under [resources directory.](./resources/sys-diagram-v1.jpeg)
+  - ADR [006 - provisioning-in-aws_2](./doc/adr/006-provisionining-in-aws_2.md) is added as a revision for [002](./doc/adr/002-provisionining-in-aws.md), citing several considerations and decisions made for EC2, ALB and RDS.
+  - Fixed typos on this readme page.

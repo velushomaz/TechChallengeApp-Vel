@@ -1,15 +1,13 @@
-# Access key and secret key from AWS.
 access_key               = ""
 secret_key               = ""
-
-# Set if you'd like to be able to SSH to jump host with own public key
 public_key_path          = "~/.ssh/id_rsa.pub"
 
 # Database Variables, current password is as provided on the extracted repo
 database_password = "changeme"
 
-# ALB allowed CIDR blocks - set to open to public by default 
+# ALB allowed CIDR blocks
 allowed_alb_cidr_blocks = ["0.0.0.0/0"]
 
-# S3 bucket key to store our terraform.tfstate files there instead on local dir.
-backend_bucket  = "<input bucket key name here>"
+# EC2 allowed CIDR blocks for SSH access
+# I've used configured this for troubleshooting
+# allowed_ec2_ssh_cidr_blocks = ["0.0.0.0/0"]
