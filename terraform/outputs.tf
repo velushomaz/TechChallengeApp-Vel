@@ -1,4 +1,4 @@
-output "lb_dns_name" {
-  description = "The DNS name of the load balancer."
-  value       = aws_alb.alb.dns_name
+output "lb_url" {
+  description = "URL of load balancer"
+  value       = "http://${module.elb_http.this_elb_dns_name}/"
 }
