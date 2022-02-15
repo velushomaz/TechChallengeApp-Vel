@@ -19,7 +19,7 @@ Submission for Servian's [TechChallengeApp](https://github.com/servian/TechChall
 
 The deployment of the app is made done on AWS using Terraform. ([helm_charts/tech-challenge-app](helm_charts/tech-challenge-app) folder)
 
-![system-diagram](./resources/sys-diagram-v1.jpeg)
+![system-diagram](./resources/sys-diagram-v1.png)
 
 ### Deploy Requirements
 
@@ -134,6 +134,6 @@ It is possible to configure this since we are using ALB, however it will be out 
 
 ### Update Logs
 - 2022-02-16 
-  - Systems diagram of the submission created on LucidChart under [resources directory.](./resources/sys-diagram-v1.jpeg)
+  - Systems diagram of the submission created on LucidChart under [resources directory.](./resources/sys-diagram-v1.png)
   - ADR [006 - provisioning-in-aws_2](./doc/adr/006-provisionining-in-aws_2.md) is added as a revision for [002](./doc/adr/002-provisionining-in-aws.md), citing several considerations and decisions made for EC2, ALB and RDS.
   - Fixed typos on this readme page.

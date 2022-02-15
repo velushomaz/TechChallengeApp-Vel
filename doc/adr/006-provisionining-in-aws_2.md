@@ -40,7 +40,7 @@ There will be:
 
 - System Diagram now enclosed in Readme and below: 
   
-  ![system-diagram](../../resources/sys-diagram-v1.jpeg)
+  ![system-diagram](../../resources/sys-diagram-v1.png)
 
 ## Consequences
 
